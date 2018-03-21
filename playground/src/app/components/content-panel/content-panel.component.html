@@ -1,6 +1,6 @@
 <form class="search-form">
   <mat-form-field class="search-full-width">
-    <input matInput placeholder="Search...">
+    <input matInput placeholder="Search..." ([ngModel])="searchText" (ngModelChange)="onSearch($event)">
   </mat-form-field>
 </form>
 <mat-divider></mat-divider>

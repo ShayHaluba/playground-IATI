@@ -9,6 +9,8 @@ export class ContentPanelComponent implements OnInit {
 
   public courses: { name: string, image: string }[] = [];
 
+  public searchText: string;
+
   constructor() {
     this.courses = [
       {
@@ -28,6 +30,10 @@ export class ContentPanelComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSearch(changeEvent) {
+
   }
 
 }
