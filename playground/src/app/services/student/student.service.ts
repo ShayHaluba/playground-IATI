@@ -15,6 +15,7 @@ export class StudentService {
 
   // App Data Model
   public _students: Student[];
+  private _loggedInStudent: Student;
 
   constructor(private _http: Http) {
     this._headers = new Headers({
@@ -46,8 +47,13 @@ export class StudentService {
 
   }
 
+  public setStudent(stud: Student) {
+    this._loggedInStudent = stud;
+  }
 
-
+  public getLoggedInStudentName(): string {
+    return this._loggedInStudent ? this._loggedInStudent.name : undefined;
+  }
 
   private handleErrorPromise(error: Response | any) {
     console.error(error.message || error);

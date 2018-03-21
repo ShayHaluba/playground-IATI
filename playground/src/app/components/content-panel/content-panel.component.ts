@@ -3,6 +3,7 @@ import { ContentEducationService } from '../../services/content-education/conten
 import { ContentEducation } from '../../models/content-education/content-education';
 // tslint:disable-next-line:max-line-length
 import { ContentEducationRecommendationService } from '../../services/content-education-recommendation/content-education-recommendation.service';
+import { StudentService } from '../../services/student/student.service';
 
 @Component({
   selector: 'app-content-panel',
@@ -15,7 +16,8 @@ export class ContentPanelComponent implements OnInit {
 
   public searchText: string;
 
-  constructor(private _contentEducationRecommendationService: ContentEducationRecommendationService) {
+  constructor(private _contentEducationRecommendationService: ContentEducationRecommendationService,
+    private _studentService: StudentService) {
     // this.courses = [
     //   {
     //     name: 'חקלאות',
@@ -42,6 +44,9 @@ export class ContentPanelComponent implements OnInit {
     });
   }
 
+  getStudentName() {
+    return this._studentService.getLoggedInStudentName();
+  }
 
   getCourses() {
     return this.searchText ? this.courses.filter(x => x.title.indexOf(this.searchText) > -1) : this.courses;

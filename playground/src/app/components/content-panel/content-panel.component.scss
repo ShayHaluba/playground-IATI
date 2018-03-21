@@ -1,11 +1,16 @@
 .search-full-width {
   width: 100%;
+  text-align: right;
 }
 
+
 .content {
-  margin: 10px 100px;
+  // margin: 10px 100px;
+  background-color: #fafafa;
   .course-content {
+    text-align: center;
     .course-card {
+      background-color: transparent;
       max-width: 200px;
       display: inline-block;
       margin: 10px;

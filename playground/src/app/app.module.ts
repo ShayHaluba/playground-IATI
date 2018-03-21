@@ -8,7 +8,14 @@ import {
   MatCardModule,
   MatInputModule,
   MatDividerModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTooltipModule,
+  MatDialogModule,
+  MatDialogRef, 
+  MAT_DIALOG_DATA,
+  MatDialogContainer,
+  MatListModule
+
 } from '@angular/material';
 
 // App Components
@@ -20,12 +27,15 @@ import { StudentService } from './services/student/student.service';
 import { ContentPanelComponent } from './components/content-panel/content-panel.component';
 import { ContentEducationService } from './services/content-education/content-education.service';
 import { ContentEducationRecommendationService } from './services/content-education-recommendation/content-education-recommendation.service';
+import { LoginComponent, DialogOverviewExampleDialog } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentProfileComponent,
-    ContentPanelComponent
+    ContentPanelComponent,
+    LoginComponent,
+    DialogOverviewExampleDialog,
   ],
   imports: [
     HttpModule,
@@ -35,13 +45,17 @@ import { ContentEducationRecommendationService } from './services/content-educat
     MatCardModule,
     MatInputModule,
     MatDividerModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatListModule
   ],
   providers: [
     StudentService,
     ContentEducationService,
     ContentEducationRecommendationService
   ],
+  entryComponents: [DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

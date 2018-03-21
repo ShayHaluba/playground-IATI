@@ -1,7 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="getStudentName()">
   <form class="search-form">
     <mat-form-field class="search-full-width">
-      <input matInput name="searchField" placeholder="Search..." [ngModel]="searchText" (ngModelChange)="searchText = $event">
+      <input matInput class="searchField" name="searchField" placeholder="...חפש" [ngModel]="searchText" (ngModelChange)="searchText = $event">
     </mat-form-field>
   </form>
   <mat-divider></mat-divider>
@@ -11,10 +11,11 @@
         <img mat-card-image [src]="course.image" alt="תמונה של מקצוע">
       </div>
       <mat-divider></mat-divider>
-      <mat-card-content>
-        <h1 class="class-header-action" >{{course.title}}</h1>
+      <mat-card-content  [matTooltip]="course.description">
+        <h1 class="class-header-action">{{course.title}}</h1>
       </mat-card-content>
     </mat-card>
   </div>
 </div>
-  
+
+<login-modal *ngIf="!getStudentName()"></login-modal>
