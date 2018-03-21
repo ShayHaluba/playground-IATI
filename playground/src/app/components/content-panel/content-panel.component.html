@@ -1,13 +1,11 @@
 <form class="search-form">
   <mat-form-field class="search-full-width">
-    <input matInput placeholder="Search..." ([ngModel])="searchText" (ngModelChange)="onSearch($event)">
+    <input matInput name="searchField" placeholder="Search..." [ngModel]="searchText" (ngModelChange)="searchText = $event">
   </mat-form-field>
 </form>
 <mat-divider></mat-divider>
-
 <div class="course-content">
-
-  <mat-card *ngFor="let course of courses" class="course-card">
+  <mat-card *ngFor="let course of getCourses()" class="course-card">
     <div class="course-header-image">
       <img mat-card-image [src]="course.image" alt="תמונה של מקצוע">
     </div>
@@ -16,6 +14,4 @@
       <h1 class="class-header-action">{{course.name}}</h1>
     </mat-card-content>
   </mat-card>
-
-
 </div>

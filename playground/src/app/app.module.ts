@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 // Angular Material Modules
 import {
   MatCardModule,
@@ -26,9 +26,10 @@ import { HttpModule } from '@angular/http';
     ContentPanelComponent
   ],
   imports: [
-    HttpModule ,
+    HttpModule,
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatCardModule,
     MatInputModule,
     MatDividerModule,

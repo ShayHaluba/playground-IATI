@@ -32,8 +32,8 @@ export class ContentPanelComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearch(changeEvent) {
 
+  getCourses() {
+    return this.searchText ? this.courses.filter(x => x.name.indexOf(this.searchText) > -1) : this.courses;
   }
-
 }
