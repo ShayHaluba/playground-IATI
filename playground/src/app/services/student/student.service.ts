@@ -10,11 +10,11 @@ export class StudentService {
   private _serverUrl = "https://playgrounddb-7648.restdb.io";
   private _headers: Headers;
   private _opts: RequestOptions;
-
+// '106d35afd80afa2bd431e44b0cc0a8321f89b',
   constructor(private _http: Http) {
     this._headers = new Headers({
       'Content-Type': 'application/json',
-      'x-apikey': '106d35afd80afa2bd431e44b0cc0a8321f89b',
+      'x-apikey': '5ab253acf0a7555103cea64a',
       // 'Access-Control-Allow-Origin': '*'
       // 'Cache-Control': 'no-cache'
     });
