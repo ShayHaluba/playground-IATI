@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 // Angular Material Modules
 import {
   MatCardModule,
@@ -17,7 +18,7 @@ import { StudentProfileComponent } from './components/student-profile/student-pr
 // App Services
 import { StudentService } from './services/student/student.service';
 import { ContentPanelComponent } from './components/content-panel/content-panel.component';
-import { HttpModule } from '@angular/http';
+import { ContentEducationService } from './services/content-education/content-education.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpModule } from '@angular/http';
     MatToolbarModule
   ],
   providers: [
-    StudentService
+    StudentService,
+    ContentEducationService
   ],
   bootstrap: [AppComponent]
 })
