@@ -40,7 +40,7 @@ export class ContentPanelComponent implements OnInit {
 
   ngOnInit() {
     this._contentEducationRecommendationService.getContentRecommendations().then(contents => {
-      this.courses = contents;
+      this.courses = contents.map(content => content.content);
     });
   }
 

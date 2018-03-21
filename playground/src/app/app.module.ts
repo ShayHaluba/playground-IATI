@@ -26,6 +26,7 @@ import { StudentProfileComponent } from './components/student-profile/student-pr
 import { StudentService } from './services/student/student.service';
 import { ContentPanelComponent } from './components/content-panel/content-panel.component';
 import { ContentEducationService } from './services/content-education/content-education.service';
+// tslint:disable-next-line:max-line-length
 import { ContentEducationRecommendationService } from './services/content-education-recommendation/content-education-recommendation.service';
 import { LoginComponent, DialogOverviewExampleDialog } from './components/login/login.component';
 
