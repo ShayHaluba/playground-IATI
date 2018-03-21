@@ -1,4 +1,4 @@
-<div class="content" *ngIf="getStudentName()">
+<div class="content">
   <form class="search-form">
     <mat-form-field class="search-full-width">
       <input matInput class="searchField" name="searchField" placeholder="...חפש" [ngModel]="searchText" (ngModelChange)="searchText = $event">
@@ -17,5 +17,3 @@
     </mat-card>
   </div>
 </div>
-
-<login-modal *ngIf="!getStudentName()"></login-modal>

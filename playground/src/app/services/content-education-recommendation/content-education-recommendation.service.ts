@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Student } from '../../models/student/student';
 import * as _ from 'lodash';
 import { EducationContentRecommandetion } from './content-grade';
+import { StudentService } from '../student/student.service';
 
 const SKILL_WEIGHT = 0.1;
 
@@ -12,12 +13,14 @@ export class ContentEducationRecommendationService {
     private _student: Student;
     private _contentRec: EducationContentRecommandetion[];
 
-    constructor(private _contentEducationService: ContentEducationService) {
+    constructor(private _contentEducationService: ContentEducationService,
+                private _studentService: StudentService) {
         this._contentRec = new Array<EducationContentRecommandetion>();
     }
 
     public async getContentRecommendations(): Promise<EducationContentRecommandetion[]> {
-        const contentEducationList = await this._contentEducationService.getContentEducations()
+        const contentEducationList = await this._contentEducationService.getContentEducations();
+        this._student = this._studentService.getLoggedInStudent();
         this._fillGradesForContentEducations(this._student, contentEducationList);
 
         return await this._contentRec;
@@ -34,12 +37,12 @@ export class ContentEducationRecommendationService {
                     studentSkillLevel = studentSkill.level;
                 }
 
-                if (studentSkillLevel < contentSkill.min_level) {
+                if (studentSkillLevel < contentSkill.min) {
                     curContentRec.isCoverPrerequisites = false;
                     curContentRec.uncoveredPrerequisites.push(contentSkill.skill_id);
                 }
                 else {
-                    const studentLevelToGain = contentSkill.max_level - studentSkillLevel;
+                    const studentLevelToGain = contentSkill.max - studentSkillLevel;
                     if (studentLevelToGain > 0) {
                         curContentRec.grade += studentLevelToGain * SKILL_WEIGHT;
                     }

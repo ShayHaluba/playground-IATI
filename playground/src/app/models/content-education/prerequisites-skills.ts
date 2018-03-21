@@ -1,5 +1,5 @@
 export class PrerequisitesSkills {
     public skill_id: number;
-    public min_level: number;
-    public max_level: number;
+    public min: number;
+    public max: number;
 }

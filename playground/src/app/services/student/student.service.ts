@@ -55,6 +55,10 @@ export class StudentService {
     return this._loggedInStudent ? this._loggedInStudent.name : undefined;
   }
 
+  public getLoggedInStudent(): Student {
+    return this._loggedInStudent;
+  }
+
   private handleErrorPromise(error: Response | any) {
     console.error(error.message || error);
     return Promise.reject(error.message || error);

@@ -44,10 +44,6 @@ export class ContentPanelComponent implements OnInit {
     });
   }
 
-  getStudentName() {
-    return this._studentService.getLoggedInStudentName();
-  }
-
   getCourses() {
     return this.searchText ? this.courses.filter(x => x.title.indexOf(this.searchText) > -1) : this.courses;
   }

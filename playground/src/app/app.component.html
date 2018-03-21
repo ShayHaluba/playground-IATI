@@ -5,4 +5,5 @@
 
 
 
-<app-content-panel></app-content-panel>
+<app-content-panel *ngIf="getStudentName()"></app-content-panel>
+<login-modal *ngIf="!getStudentName()"></login-modal>
