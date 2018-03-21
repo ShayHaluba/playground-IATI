@@ -18,7 +18,7 @@ export class ContentEducationService {
   }
 
   public getContentEducations(): Promise<ContentEducation[]> {
-    return this._http.get(this._serverUrl + '/rest/contenteducation', this._opts).map(response => {
+    return this._http.get(this._serverUrl + '/rest/content-education', this._opts).map(response => {
       const responseJson = response.json();
       console.log(responseJson);
       return responseJson;

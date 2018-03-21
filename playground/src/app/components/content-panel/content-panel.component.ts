@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContentEducationService } from '../../services/content-education/content-education.service';
 import { ContentEducation } from '../../models/content-education/content-education';
+// tslint:disable-next-line:max-line-length
+import { ContentEducationRecommendationService } from '../../services/content-education-recommendation/content-education-recommendation.service';
 
 @Component({
   selector: 'app-content-panel',
@@ -13,7 +15,7 @@ export class ContentPanelComponent implements OnInit {
 
   public searchText: string;
 
-  constructor(private _educationContentService: ContentEducationService) {
+  constructor(private _contentEducationRecommendationService: ContentEducationRecommendationService) {
     // this.courses = [
     //   {
     //     name: 'חקלאות',
@@ -35,7 +37,7 @@ export class ContentPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._educationContentService.getContentEducations().then(contents => {
+    this._contentEducationRecommendationService.getContentRecommendations().then(contents => {
       this.courses = contents;
     });
   }

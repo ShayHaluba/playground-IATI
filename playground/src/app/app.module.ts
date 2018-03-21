@@ -19,6 +19,7 @@ import { StudentProfileComponent } from './components/student-profile/student-pr
 import { StudentService } from './services/student/student.service';
 import { ContentPanelComponent } from './components/content-panel/content-panel.component';
 import { ContentEducationService } from './services/content-education/content-education.service';
+import { ContentEducationRecommendationService } from './services/content-education-recommendation/content-education-recommendation.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ContentEducationService } from './services/content-education/content-ed
   ],
   providers: [
     StudentService,
-    ContentEducationService
+    ContentEducationService,
+    ContentEducationRecommendationService
   ],
   bootstrap: [AppComponent]
 })

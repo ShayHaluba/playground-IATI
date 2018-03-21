@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ContentEducationRecommendationService {
-    constructor(private contentEducationService: ContentEducationService) {
+    constructor(private _contentEducationService: ContentEducationService) {
     }
 
-    public async getRecommendations(): Promise<ContentEducation[]> {
-        return await this.contentEducationService.getContentEducations();
+    public async getContentRecommendations(): Promise<ContentEducation[]> {
+        return await this._contentEducationService.getContentEducations();
     }
 }
