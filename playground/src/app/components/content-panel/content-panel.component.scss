@@ -1,0 +1,25 @@
+.search-full-width {
+  width: 100%;
+}
+
+.course-card {
+  max-width: 200px;
+  display: inline-block;
+  margin: 10px;
+
+  .course-header-image {
+    >img {
+      border-radius: 50%;
+      width:250px;
+      height: 250px;
+    }
+  }
+
+  .class-header-action{
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+
