@@ -7,6 +7,7 @@ import { StudentService } from '../../services/student/student.service';
 import { MatDialog } from '@angular/material';
 import { CourseContentComponent } from '../course-content/course-content.component';
 import { EducationContentRecommandetion } from '../../services/content-education-recommendation/content-grade';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-content-panel',
@@ -28,7 +29,26 @@ export class ContentPanelComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this._contentEducationRecommendationService.getContentRecommendations().then(contents => {
-      this.courses = contents;
+      // this.courses = _.sortBy(contents, ['isCoverPrerequisites', 'grade'], ['asc', 'desc']);
+      this.courses = contents.sort(function (a, b) {
+        if(a.isCoverPrerequisites && b.isCoverPrerequisites || 
+           !a.isCoverPrerequisites && !b.isCoverPrerequisites) {
+            if (a.grade > b.grade) {
+              return -1;
+            }
+            else if (a.grade < b.grade) {
+              return 1;
+            }
+            else if (a.grade === b.grade) {
+              return 0;
+            }
+        } else if (a.isCoverPrerequisites) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      console.log("=== Sorted list", this.courses);
       this.isLoading = false;
     });
   }
