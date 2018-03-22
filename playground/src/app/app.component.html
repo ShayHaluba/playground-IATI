@@ -4,6 +4,6 @@
 <app-student-profile></app-student-profile>
 
 
-
+<h1 dir="rtl" *ngIf="getStudentName()">שלום {{getStudentName()}},</h1>
 <app-content-panel *ngIf="getStudentName()"></app-content-panel>
 <login-modal *ngIf="!getStudentName()"></login-modal>

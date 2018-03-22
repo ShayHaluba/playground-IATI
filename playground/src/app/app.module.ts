@@ -17,7 +17,8 @@ import {
   MatListModule,
   MatButtonModule,
   MatStepperModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatRadioModule
 } from '@angular/material';
 
 // App Components
@@ -57,7 +58,8 @@ import { CourseContentComponent } from './components/course-content/course-conte
     MatListModule,
     MatButtonModule,
     MatStepperModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatRadioModule
   ],
   providers: [
     StudentService,

@@ -1,22 +1,25 @@
 <h2>{{data.course.title}}</h2>
-<button mat-raised-button (click)="isLinear=true" id="toggle-linear">Enable linear mode</button>
-
-<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+<mat-horizontal-stepper dir="rtl" linear="true" #stepper="matHorizontalStepper">
   <mat-step [stepControl]="firstFormGroup">
     <ng-template matStepLabel>תוכן למידה</ng-template>
     <iframe style="display: -webkit-box; margin: 0 auto;" [src]='getContent()' width="640" height="360" frameborder="0" webkitallowfullscreen
       mozallowfullscreen allowfullscreen>
     </iframe>
+    <div class="stepperControls">
+      <button mat-button matStepperNext>הבא</button>
+    </div>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+    <form [formGroup]="examFormGroup">
       <ng-template matStepLabel>מה למדתי?</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+      <mat-radio-group dir="rtl" *ngFor="let question of data.course.exam">
+        <p>{{question.question}}</p>
+        <mat-radio-button #radButton *ngFor="let ans of question.posible_answers; let i = index" [value]="i" (click)="onSelectAnswer(question, i, radButton);">{{ans}}</mat-radio-button>
+        <p *ngIf="question.feedback" [ngClass]="{'success': isSuccess(question), 'danger': !isSuccess(question)}">{{question.feedback}}</p>
+      </mat-radio-group>
+      <div class="stepperControls">
+        <button mat-button matStepperPrevious>חזור</button>
+        <button mat-button matStepperNext>הבא</button>
       </div>
     </form>
   </mat-step>
@@ -25,7 +28,7 @@
     <div class="stepContent">
       כל הכבוד סיימת את '{{data.course.title}}' בהצלחה
     </div>
-    <div>
+    <div class="stepperControls">
       <button mat-button matStepperPrevious>חזור</button>
       <button mat-button (click)="close()">המשך לתוכן הבא</button>
     </div>

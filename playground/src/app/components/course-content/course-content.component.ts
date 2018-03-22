@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CourseContentComponent implements OnInit {
 
   isLinear = false;
-  firstFormGroup: FormGroup;
+  examFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
 
@@ -23,11 +23,8 @@ export class CourseContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+    this.examFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
     });
   }
 
@@ -39,7 +36,22 @@ export class CourseContentComponent implements OnInit {
     }
   }
 
-  close(){
+  close() {
     this.dialogRef.close();
+  }
+
+  onSelectAnswer(question, i, radButton) {
+    if (question.right_answer == (i + 1)) {
+      question.feedback = "תשובה נכונה! כל הכבוד!";
+      question.feedbackColor = "success";
+    }
+    else {
+      question.feedback = "תשובה לא נכונה! נסה שוב!"
+      question.feedbackColor = "danger";
+    }
+  }
+
+  isSuccess(question) {
+    return question.feedbackColor && question.feedbackColor == "success";
   }
 }

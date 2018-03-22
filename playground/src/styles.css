@@ -5,7 +5,7 @@ body {
   background: url('../resources/img/app_background.png');
   /* background-size: 100% 100%; */
   background-size: cover;
-  /* background-color: #64f709; */
+  /* background-color: #80c656; */
   margin: 10px 100px;
 }
 
@@ -25,6 +25,44 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.stepContent{
-  text-align: right;
+.stepContent {
+  text-align: right !important;
+}
+
+.stepperControls {
+  text-align: left !important;
+}
+
+* {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-radio-button {
+  /* display: block; */
+  display: block !important;
+  margin: 5px;
+}
+
+.radio-success>.mat-radio-outer-circle {
+  border-color: #80c656;
+}
+
+.radio-success>.mat-radio-inner-circle {
+  border-color: #80c656;
+}
+
+.radio-danger>.mat-radio-outer-circle {
+  border-color: #911914;
+}
+
+.radio-danger>.mat-radio-inner-circle {
+  border-color: #911914;
+}
+
+p.success {
+  color: #80c656;
+}
+
+p.danger {
+  color: #911914;
 }
