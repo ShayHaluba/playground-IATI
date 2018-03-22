@@ -59,10 +59,10 @@ body {
   border-color: #911914;
 }
 
-p.success {
+span.success {
   color: #80c656;
 }
 
-p.danger {
+span.danger {
   color: #911914;
 }

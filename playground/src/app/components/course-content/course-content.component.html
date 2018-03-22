@@ -13,9 +13,10 @@
     <form [formGroup]="examFormGroup">
       <ng-template matStepLabel>מה למדתי?</ng-template>
       <mat-radio-group dir="rtl" *ngFor="let question of data.course.exam">
-        <p>{{question.question}}</p>
+        <p>{{question.question}}
+          <span *ngIf="question.feedback" [ngClass]="{'success': isSuccess(question), 'danger': !isSuccess(question)}">{{question.feedback}}</span>
+        </p>
         <mat-radio-button #radButton *ngFor="let ans of question.posible_answers; let i = index" [value]="i" (click)="onSelectAnswer(question, i, radButton);">{{ans}}</mat-radio-button>
-        <p *ngIf="question.feedback" [ngClass]="{'success': isSuccess(question), 'danger': !isSuccess(question)}">{{question.feedback}}</p>
       </mat-radio-group>
       <div class="stepperControls">
         <button mat-button matStepperPrevious>חזור</button>
@@ -26,7 +27,8 @@
   <mat-step>
     <ng-template matStepLabel>משוב</ng-template>
     <div class="stepContent">
-      <p><b>כל הכבוד!</b> סיימת את '{{data.course.title}}' בהצלחה.</p>
+      <p>
+        <b>כל הכבוד!</b> סיימת את '{{data.course.title}}' בהצלחה.</p>
       <p>קיבלת את המיומנויות הבאות:</p>
       <ul>
         <li *ngFor="let sk of earnedSkills">{{sk}}</li>
