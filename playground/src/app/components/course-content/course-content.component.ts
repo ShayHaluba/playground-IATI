@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ContentEducationService } from '../../services/content-education/content-education.service';
 @Component({
   selector: 'app-course-content',
   templateUrl: './course-content.component.html',
@@ -18,6 +19,7 @@ export class CourseContentComponent implements OnInit {
     public dialogRef: MatDialogRef<CourseContentComponent>,
     private _formBuilder: FormBuilder,
     public sanitizer: DomSanitizer,
+    private contentService: ContentEducationService,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     console.log(data);
   }
@@ -49,6 +51,12 @@ export class CourseContentComponent implements OnInit {
       question.feedback = "תשובה לא נכונה! נסה שוב!"
       question.feedbackColor = "danger";
     }
+  }
+
+  getSkills(){
+    this.contentService.getSkills().then(skills=>{
+      console.log(this.data);
+    });
   }
 
   isSuccess(question) {
