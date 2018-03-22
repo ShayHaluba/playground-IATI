@@ -1,1 +1,33 @@
 <h2>{{data.course.title}}</h2>
+<button mat-raised-button (click)="isLinear=true" id="toggle-linear">Enable linear mode</button>
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>תוכן למידה</ng-template>
+    <iframe style="display: -webkit-box; margin: 0 auto;" [src]='getContent()' width="640" height="360" frameborder="0" webkitallowfullscreen
+      mozallowfullscreen allowfullscreen>
+    </iframe>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>מה למדתי?</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>משוב</ng-template>
+    <div class="stepContent">
+      כל הכבוד סיימת את '{{data.course.title}}' בהצלחה
+    </div>
+    <div>
+      <button mat-button matStepperPrevious>חזור</button>
+      <button mat-button (click)="close()">המשך לתוכן הבא</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

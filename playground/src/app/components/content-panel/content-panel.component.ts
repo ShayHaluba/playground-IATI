@@ -40,7 +40,7 @@ export class ContentPanelComponent implements OnInit {
     console.log(course);
 
     let dialogRef = this.dialog.open(CourseContentComponent, {
-      width: '250px',
+      width: '90%',
       data: { course: course }
     });
 
