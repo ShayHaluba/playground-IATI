@@ -14,8 +14,9 @@ import {
   MatDialogRef, 
   MAT_DIALOG_DATA,
   MatDialogContainer,
-  MatListModule
-
+  MatListModule,
+  MatButtonModule,
+  MatStepperModule
 } from '@angular/material';
 
 // App Components
@@ -49,7 +50,9 @@ import { LoginComponent, DialogOverviewExampleDialog } from './components/login/
     MatToolbarModule,
     MatTooltipModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatButtonModule,
+    MatStepperModule
   ],
   providers: [
     StudentService,
