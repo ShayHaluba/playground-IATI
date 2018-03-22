@@ -3,7 +3,7 @@ import { ContentEducationService } from '../content-education/content-education.
 import { Injectable } from '@angular/core';
 import { Student } from '../../models/student/student';
 import * as _ from 'lodash';
-import { EducationContentRecommandetion } from './content-grade';
+import { EducationContentRecommandetion, SkillRewards } from './content-grade';
 import { StudentService } from '../student/student.service';
 
 const SKILL_WEIGHT = 0.1;
@@ -28,7 +28,7 @@ export class ContentEducationRecommendationService {
 
     private _fillGradesForContentEducations(student: Student, contentList: ContentEducation[]) {
         _.forEach(contentList, (content) => {
-            let curContentRec = new EducationContentRecommandetion(content, 0, true, []);
+            let curContentRec = new EducationContentRecommandetion(content, 0, true, [], []);
 
             _.forEach(content.prerequisites_skills, (contentSkill) => {
                 let studentSkill = _.find(this._student.skills, (studentSkill) => studentSkill.skill_id === contentSkill.skill_id);
@@ -44,7 +44,9 @@ export class ContentEducationRecommendationService {
                 else {
                     const studentLevelToGain = contentSkill.max - studentSkillLevel;
                     if (studentLevelToGain > 0) {
-                        curContentRec.grade += studentLevelToGain * SKILL_WEIGHT;
+                        let rewardForSkill = studentLevelToGain * SKILL_WEIGHT;
+                        curContentRec.skillRewards.push(new SkillRewards(contentSkill.skill_id, rewardForSkill));
+                        curContentRec.grade += rewardForSkill;
                     }
                 }
             });
