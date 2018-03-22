@@ -15,6 +15,7 @@ export class CourseContentComponent implements OnInit {
   secondFormGroup: FormGroup;
   public earnedSkills: any[] = [];
   private askedForSkills = false;
+  public coinsEarned: number;
   constructor(
     public dialogRef: MatDialogRef<CourseContentComponent>,
     private _formBuilder: FormBuilder,
@@ -30,6 +31,7 @@ export class CourseContentComponent implements OnInit {
       firstCtrl: ['', Validators.required]
     });
     this.getSkills();
+    this.coinsEarned = 0;
   }
 
 
@@ -64,6 +66,7 @@ export class CourseContentComponent implements OnInit {
           let skill = skills.find(y => y.skill_id == x);
           let skillReward = this.data.skillsReward.find(z => z.skill_id == x);
           this.earnedSkills.push(`${skill.name}: ${skillReward.reward}`);
+          this.coinsEarned += skillReward.reward;
         });
       });
     }
