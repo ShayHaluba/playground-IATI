@@ -26,8 +26,11 @@
   <mat-step>
     <ng-template matStepLabel>משוב</ng-template>
     <div class="stepContent">
-      כל הכבוד סיימת את '{{data.course.title}}' בהצלחה
-      {{getSkills()}}
+      <p>כל הכבוד סיימת את '{{data.course.title}}' בהצלחה</p>
+      <p>קיבלת את המיומנויות הבאות:</p>
+      <ul>
+        <li *ngFor="let sk of earnedSkills">{{sk}}</li>
+      </ul>
     </div>
     <div class="stepperControls">
       <button mat-button matStepperPrevious>חזור</button>

@@ -13,13 +13,14 @@ export class CourseContentComponent implements OnInit {
   isLinear = false;
   examFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-
-
+  public earnedSkills: any[] = [];
+  private askedForSkills = false;
   constructor(
     public dialogRef: MatDialogRef<CourseContentComponent>,
     private _formBuilder: FormBuilder,
     public sanitizer: DomSanitizer,
     private contentService: ContentEducationService,
+
     @Inject(MAT_DIALOG_DATA) public data: any) {
     console.log(data);
   }
@@ -28,6 +29,7 @@ export class CourseContentComponent implements OnInit {
     this.examFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
+    this.getSkills();
   }
 
 
@@ -53,10 +55,19 @@ export class CourseContentComponent implements OnInit {
     }
   }
 
-  getSkills(){
-    this.contentService.getSkills().then(skills=>{
-      console.log(this.data);
-    });
+  getSkills() {
+    if (!this.askedForSkills) {
+      this.askedForSkills = true;
+      this.contentService.getSkills().then(skills => {
+        console.log(this.data.course.skills_to_gain);
+        this.data.course.skills_to_gain.forEach(x => {
+          let skill = skills.find(y => y.skill_id == x);
+          this.earnedSkills.push(skill.name);
+        });
+      });
+    }
+    else {
+    }
   }
 
   isSuccess(question) {
