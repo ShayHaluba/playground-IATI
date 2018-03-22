@@ -9,12 +9,34 @@
   <mat-divider></mat-divider>
   <div class="course-content">
     <mat-card *ngFor="let course of getCourses()" class="course-card" (click)="showCourse(course)">
+      <i class="material-icons" *ngIf="!course.isCoverPrerequisites" style="
+      color: rgb(229, 239, 236);
+      z-index: 9999;
+      font-size: 60px;
+      position: absolute;
+      top: 30%;
+      right: 39%;
+      left: auto;
+    ">lock</i>
+      <div class="lock-content" 
+      *ngIf="!course.isCoverPrerequisites"
+      style="
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index:2;
+        background-color: gray;
+        bottom: 0;
+        left: 0;
+        opacity: 0.8;
+        /* align-content: center; */
+    "> </div>
       <div class="course-header-image">
-        <img mat-card-image [src]="course.image" alt="תמונה של מקצוע">
+        <img mat-card-image [src]="course.content.image" alt="תמונה של מקצוע">
       </div>
       <mat-divider></mat-divider>
-      <mat-card-content [matTooltip]="course.description">
-        <h1 class="class-header-action">{{course.title}}</h1>
+      <mat-card-content [matTooltip]="course.content.description">
+        <h1 class="class-header-action">{{course.content.title}}</h1>
       </mat-card-content>
     </mat-card>
   </div>

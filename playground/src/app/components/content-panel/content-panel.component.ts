@@ -6,6 +6,7 @@ import { ContentEducationRecommendationService } from '../../services/content-ed
 import { StudentService } from '../../services/student/student.service';
 import { MatDialog } from '@angular/material';
 import { CourseContentComponent } from '../course-content/course-content.component';
+import { EducationContentRecommandetion } from '../../services/content-education-recommendation/content-grade';
 
 @Component({
   selector: 'app-content-panel',
@@ -14,7 +15,7 @@ import { CourseContentComponent } from '../course-content/course-content.compone
 })
 export class ContentPanelComponent implements OnInit {
 
-  public courses: ContentEducation[] = [];
+  public courses: EducationContentRecommandetion[] = [];
 
   public searchText: string;
 
@@ -27,13 +28,13 @@ export class ContentPanelComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this._contentEducationRecommendationService.getContentRecommendations().then(contents => {
-      this.courses = contents.map(content => content.content);
+      this.courses = contents;
       this.isLoading = false;
     });
   }
 
   getCourses() {
-    return this.searchText ? this.courses.filter(x => x.title.indexOf(this.searchText) > -1) : this.courses;
+    return this.searchText ? this.courses.filter(x => x.content.title.indexOf(this.searchText) > -1) : this.courses;
   }
 
   public showCourse(course) {
