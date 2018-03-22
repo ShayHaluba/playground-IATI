@@ -16,7 +16,8 @@ import {
   MatDialogContainer,
   MatListModule,
   MatButtonModule,
-  MatStepperModule
+  MatStepperModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 // App Components
@@ -30,6 +31,7 @@ import { ContentEducationService } from './services/content-education/content-ed
 // tslint:disable-next-line:max-line-length
 import { ContentEducationRecommendationService } from './services/content-education-recommendation/content-education-recommendation.service';
 import { LoginComponent, DialogOverviewExampleDialog } from './components/login/login.component';
+import { CourseContentComponent } from './components/course-content/course-content.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { LoginComponent, DialogOverviewExampleDialog } from './components/login/
     ContentPanelComponent,
     LoginComponent,
     DialogOverviewExampleDialog,
+    CourseContentComponent,
   ],
   imports: [
     HttpModule,
@@ -52,7 +55,8 @@ import { LoginComponent, DialogOverviewExampleDialog } from './components/login/
     MatDialogModule,
     MatListModule,
     MatButtonModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     StudentService,

@@ -16,6 +16,7 @@ export class ContentPanelComponent implements OnInit {
 
   public searchText: string;
 
+  public isLoading = false;
   constructor(private _contentEducationRecommendationService: ContentEducationRecommendationService,
     private _studentService: StudentService) {
     // this.courses = [
@@ -39,12 +40,18 @@ export class ContentPanelComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this._contentEducationRecommendationService.getContentRecommendations().then(contents => {
       this.courses = contents.map(content => content.content);
+      this.isLoading = false;
     });
   }
 
   getCourses() {
     return this.searchText ? this.courses.filter(x => x.title.indexOf(this.searchText) > -1) : this.courses;
+  }
+
+  public showCourse(course){
+    console.log(course);
   }
 }

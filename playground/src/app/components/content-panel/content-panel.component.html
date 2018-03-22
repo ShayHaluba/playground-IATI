@@ -1,4 +1,6 @@
 <div class="content">
+  <mat-progress-spinner *ngIf="isLoading" class="centered-loading" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
   <form class="search-form">
     <mat-form-field class="search-full-width">
       <input matInput class="searchField" name="searchField" placeholder="...חפש" [ngModel]="searchText" (ngModelChange)="searchText = $event">
@@ -6,12 +8,12 @@
   </form>
   <mat-divider></mat-divider>
   <div class="course-content">
-    <mat-card *ngFor="let course of getCourses()" class="course-card">
+    <mat-card *ngFor="let course of getCourses()" class="course-card" (click)="showCourse(course)">
       <div class="course-header-image">
         <img mat-card-image [src]="course.image" alt="תמונה של מקצוע">
       </div>
       <mat-divider></mat-divider>
-      <mat-card-content  [matTooltip]="course.description">
+      <mat-card-content [matTooltip]="course.description">
         <h1 class="class-header-action">{{course.title}}</h1>
       </mat-card-content>
     </mat-card>

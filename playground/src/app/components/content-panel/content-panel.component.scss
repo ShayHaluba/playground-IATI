@@ -14,6 +14,7 @@
       max-width: 200px;
       display: inline-block;
       margin: 10px;
+      cursor: pointer;
       .course-header-image {
         >img {
           border-radius: 50%;
@@ -25,7 +26,6 @@
       .class-header-action {
         padding-top: 10px;
         text-align: center;
-        cursor: pointer;
       }
     }
   }
