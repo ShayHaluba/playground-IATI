@@ -8,7 +8,7 @@
   </form>
   <mat-divider></mat-divider>
   <div class="course-content">
-    <mat-card *ngFor="let course of getCourses()" class="course-card" (click)="showCourse(course)">
+    <mat-card *ngFor="let course of getCourses()" class="course-card" (click)="showCourse(course.content)">
       <i class="material-icons" *ngIf="!course.isCoverPrerequisites" style="
       color: rgb(229, 239, 236);
       z-index: 9999;
