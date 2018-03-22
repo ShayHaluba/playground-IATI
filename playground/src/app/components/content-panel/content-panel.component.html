@@ -8,7 +8,12 @@
   </form>
   <mat-divider></mat-divider>
   <div class="course-content">
-    <mat-card *ngFor="let course of getCourses()" class="course-card" (click)="showCourse(course.content)">
+    <mat-card *ngFor="let course of getCourses(); let i=index" class="course-card" (click)="showCourse(course.content)">
+      <i class="material-icons" *ngIf="i < 3" style="font-size: 60px;
+      position: absolute;
+      top: -30px;
+      left: -24px;
+      color: #f4e247;">star</i>
       <i class="material-icons" *ngIf="!course.isCoverPrerequisites" style="
       color: rgb(229, 239, 236);
       z-index: 3;
