@@ -8,7 +8,7 @@
   </form>
   <mat-divider></mat-divider>
   <div class="course-content">
-    <mat-card *ngFor="let course of getCourses(); let i=index" class="course-card" (click)="showCourse(course.content)">
+    <mat-card *ngFor="let course of getCourses(); let i=index" class="course-card" (click)="showCourse(course)">
       <i class="material-icons" *ngIf="i < 3" style="font-size: 60px;
       position: absolute;
       top: -30px;

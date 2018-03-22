@@ -62,7 +62,8 @@ export class CourseContentComponent implements OnInit {
         console.log(this.data.course.skills_to_gain);
         this.data.course.skills_to_gain.forEach(x => {
           let skill = skills.find(y => y.skill_id == x);
-          this.earnedSkills.push(skill.name);
+          let skillReward = this.data.skillsReward.find(z => z.skill_id == x);
+          this.earnedSkills.push(`${skill.name}: ${skillReward.reward}`);
         });
       });
     }

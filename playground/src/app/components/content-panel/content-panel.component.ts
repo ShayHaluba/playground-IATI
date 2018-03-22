@@ -57,12 +57,13 @@ export class ContentPanelComponent implements OnInit {
     return this.searchText ? this.courses.filter(x => x.content.title.indexOf(this.searchText) > -1) : this.courses;
   }
 
-  public showCourse(course) {
+  public showCourse(course: EducationContentRecommandetion) {
     console.log(course);
 
     let dialogRef = this.dialog.open(CourseContentComponent, {
       width: '90%',
-      data: { course: course }
+      data: { course: course.content,
+        skillsReward: course.skillRewards }
     });
 
     dialogRef.afterClosed().subscribe(result => {
