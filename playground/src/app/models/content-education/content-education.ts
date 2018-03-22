@@ -1,5 +1,6 @@
 import { ContentLinks } from './content-links';
 import { PrerequisitesSkills } from './prerequisites-skills';
+import { ExamQuestion } from './exam-question';
 
 export interface ContentEducation {
     _id: string;
@@ -9,4 +10,5 @@ export interface ContentEducation {
     description: string;
     links: ContentLinks[];
     prerequisites_skills: PrerequisitesSkills[];
+    exams: ExamQuestion[];
 }
