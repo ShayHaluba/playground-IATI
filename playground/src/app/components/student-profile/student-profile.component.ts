@@ -13,15 +13,4 @@ export class StudentProfileComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  testsStudents():Promise<any> {
-    return this._studentService.getStudents();
-  }
-
-
-  testUpdateStudent(){
-    let students = this.testsStudents().then(students =>{
-      this._studentService.updateStudent(students[0]);
-    });
-  }
 }

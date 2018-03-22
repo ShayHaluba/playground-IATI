@@ -4,8 +4,12 @@
 
 
 <div style="text-align: center; margin-bottom:10px;">
-    <span style="float: right; cursor: pointer; margin-right: 5px;" (click)="showProfile = !showProfile">
+
+    <span style="float: right; cursor: pointer;" (click)="showProfile = !showProfile">
         <i class="material-icons" style="font-size:48px;">person_pin</i>
+    </span>
+    <span style="float: right; cursor: pointer; margin-left: 5px;" (click)="searchClicked()">
+        <i class="material-icons" style="font-size:48px;">search</i>
     </span>
     <span style="float: right; cursor: pointer;" (click)="starClicked()">
         <i class="material-icons" style="    font-size: 41px;

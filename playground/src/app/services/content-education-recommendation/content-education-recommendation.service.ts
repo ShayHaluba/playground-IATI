@@ -1,6 +1,6 @@
 import { ContentEducation } from '../../models/content-education/content-education';
 import { ContentEducationService } from '../content-education/content-education.service';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Student } from '../../models/student/student';
 import * as _ from 'lodash';
 import { EducationContentRecommandetion, SkillRewards } from './content-grade';
@@ -12,6 +12,8 @@ const SKILL_WEIGHT = 0.1;
 export class ContentEducationRecommendationService {
     private _student: Student;
     private _contentRec: EducationContentRecommandetion[];
+    public starClick = new EventEmitter();
+    public searchClick = new EventEmitter();
 
     constructor(private _contentEducationService: ContentEducationService,
                 private _studentService: StudentService) {
@@ -19,6 +21,7 @@ export class ContentEducationRecommendationService {
     }
 
     public async getContentRecommendations(): Promise<EducationContentRecommandetion[]> {
+        this._contentRec = new Array<EducationContentRecommandetion>();
         const contentEducationList = await this._contentEducationService.getContentEducations();
         this._student = this._studentService.getLoggedInStudent();
         this._fillGradesForContentEducations(this._student, contentEducationList);
@@ -54,4 +57,6 @@ export class ContentEducationRecommendationService {
             this._contentRec.push(curContentRec);
         });
     }
+
+
 }

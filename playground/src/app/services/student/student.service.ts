@@ -27,13 +27,17 @@ export class StudentService {
   }
 
   public getStudents() {
-    return this._http.get(this._serverUrl, this._opts).toPromise()
-      .then(res => {
-        let body = res.json() as Student[];
-        this._students = body;
-        return body;
-      })
-      .catch(this.handleErrorPromise);
+    //if (!this._students) {
+      return this._http.get(this._serverUrl, this._opts).toPromise()
+        .then(res => {
+          let body = res.json() as Student[];
+          this._students = body;
+          return body;
+        })
+        .catch(this.handleErrorPromise);
+    // }else {
+    //   return this._students;
+    // }
   }
 
   updateStudent(student: Student) {

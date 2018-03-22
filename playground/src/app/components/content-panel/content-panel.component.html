@@ -3,12 +3,12 @@
   </mat-progress-spinner>
   <form class="search-form">
     <mat-form-field class="search-full-width">
-      <input matInput class="searchField" name="searchField" placeholder="...חפש" [ngModel]="searchText" (ngModelChange)="searchText = $event">
+      <input matInput class="searchField" name="searchField" placeholder="...חפש" [ngModel]="searchText" (ngModelChange)="doSearch()">
     </mat-form-field>
   </form>
   <mat-divider></mat-divider>
   <div class="course-content">
-    <mat-card *ngFor="let course of getCourses(); let i=index" class="course-card" (click)="course.isCoverPrerequisites && showCourse(course)">
+    <mat-card *ngFor="let course of viewcourses; let i=index" class="course-card" (click)="course.isCoverPrerequisites && showCourse(course)">
       <i class="material-icons" *ngIf="i < 3" style="font-size: 60px;
       position: absolute;
       top: -30px;

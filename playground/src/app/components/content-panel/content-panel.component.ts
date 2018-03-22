@@ -17,13 +17,21 @@ import * as _ from 'lodash';
 export class ContentPanelComponent implements OnInit {
 
   public courses: EducationContentRecommandetion[] = [];
-
+  public viewcourses: EducationContentRecommandetion[] = [];
   public searchText: string;
 
   public isLoading = false;
   constructor(private _contentEducationRecommendationService: ContentEducationRecommendationService,
     private _studentService: StudentService,
     public dialog: MatDialog) {
+
+      this._contentEducationRecommendationService.starClick.subscribe(() => {
+        this.viewcourses = this.courses.slice(0,3);
+      });
+
+      this._contentEducationRecommendationService.searchClick.subscribe(() => {
+        this.viewcourses = _.cloneDeep(this.courses);
+      });
   }
 
   ngOnInit() {
@@ -50,11 +58,17 @@ export class ContentPanelComponent implements OnInit {
       });
       console.log("=== Sorted list", this.courses);
       this.isLoading = false;
+      this.viewcourses = _.cloneDeep(this.courses);
     });
   }
 
-  getCourses() {
-    return this.searchText ? this.courses.filter(x => x.content.title.indexOf(this.searchText) > -1) : this.courses;
+  doSearch() {
+    if (this.searchText) {
+      this.viewcourses = this.courses.filter(x => x.content.title.indexOf(this.searchText) > -1);
+    }else {
+      this.viewcourses = _.cloneDeep(this.courses);
+    }
+    //return this.searchText ? this.courses.filter(x => x.content.title.indexOf(this.searchText) > -1) : this.courses;
   }
 
   public showCourse(course: EducationContentRecommandetion) {
