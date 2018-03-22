@@ -8,10 +8,15 @@ import { StudentService } from './services/student/student.service';
 })
 export class AppComponent {
   title = 'app';
+  showProfile = false;
   constructor(
     private _studentService: StudentService) {
     }
   getStudentName() {
     return this._studentService.getLoggedInStudentName();
+  }
+
+  profileClicked() {
+
   }
 }
