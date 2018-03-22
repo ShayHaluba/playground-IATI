@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
 
       let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
         width: '250px',
-        data: {students: studs, selected: undefined}
+        data: { students: studs, selected: undefined }
       });
-      
+
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this._studentService.setStudent(result);
@@ -38,8 +38,8 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(data);
-     }
+    console.log(data);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

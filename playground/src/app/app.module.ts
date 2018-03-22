@@ -11,7 +11,7 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatDialogModule,
-  MatDialogRef, 
+  MatDialogRef,
   MAT_DIALOG_DATA,
   MatDialogContainer,
   MatListModule,
@@ -63,7 +63,7 @@ import { CourseContentComponent } from './components/course-content/course-conte
     ContentEducationService,
     ContentEducationRecommendationService
   ],
-  entryComponents: [DialogOverviewExampleDialog],
+  entryComponents: [DialogOverviewExampleDialog, CourseContentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
