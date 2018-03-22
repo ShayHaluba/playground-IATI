@@ -10,10 +10,12 @@
   .course-content {
     text-align: center;
     .course-card {
-      background-color: transparent;
-      max-width: 200px;
-      display: inline-block;
+      background-color: rgb(224, 236, 247);
+      width: 200px;
+      min-height: 255px;
+      display: inline-table;
       margin: 10px;
+      cursor: pointer;
       cursor: pointer;
       .course-header-image {
         >img {
