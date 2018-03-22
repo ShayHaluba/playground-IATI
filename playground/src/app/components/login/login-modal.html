@@ -1,7 +1,7 @@
 <h1 mat-dialog-title style="text-align: center;">התחבר</h1>
-<mat-list role="list">
-  <mat-list-item style="cursor: pointer;" role="listitem" (click)="data.selected=item;" *ngFor="let item of data.students">{{item.name}}</mat-list-item>
-</mat-list>
+<mat-nav-list role="list" dir="rtl">
+  <a mat-list-item (click)="data.selected=item;" [ngClass]="{'active': data.selected == item}" *ngFor="let item of data.students"> {{item.name}}</a>
+</mat-nav-list>
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="data.selected" cdkFocusInitial>התחבר</button>
 </div>

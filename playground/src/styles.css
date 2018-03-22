@@ -77,3 +77,7 @@ span.danger {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+a.active {
+  background: rgba(0, 0, 0, .09);
+}
