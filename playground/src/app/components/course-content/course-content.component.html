@@ -32,8 +32,11 @@
       <p>קיבלת את המיומנויות הבאות:</p>
       <ul>
         <li *ngFor="let sk of earnedSkills">{{sk}}</li>
-        <li>קיבלת {{coinsEarned}} מטבעות</li>
       </ul>
+      <p>
+        <i class="material-icons">monetization_on</i>
+        קיבלת {{coinsEarned}} מטבעות
+      </p>
     </div>
     <div class="stepperControls">
       <button mat-button matStepperPrevious>חזור</button>
