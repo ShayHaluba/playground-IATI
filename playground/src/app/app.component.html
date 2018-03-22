@@ -3,6 +3,12 @@
 <app-student-profile></app-student-profile>
 
 
-<h1 dir="rtl" *ngIf="getStudentName()">שלום {{getStudentName()}},</h1>
+<div style="text-align: center; margin-bottom:10px;">
+    <span style="float: right;">
+        <i class="material-icons" style="font-size:48px;">person_pin</i>
+    </span>
+    <span dir="rtl" *ngIf="getStudentName()" style="font-size:40px;">שלום {{getStudentName()}}
+    </span>
+</div>
 <app-content-panel *ngIf="getStudentName()"></app-content-panel>
 <login-modal *ngIf="!getStudentName()"></login-modal>
