@@ -66,3 +66,14 @@ span.success {
 span.danger {
   color: #911914;
 }
+
+.profileImage {
+  max-height: 500px;
+  max-width: 100%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
